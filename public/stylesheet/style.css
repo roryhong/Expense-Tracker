@@ -1,0 +1,10 @@
+/*需要定義container的寬度*/
+.container {
+    max-width: 30%;
+}
+
+/* @media screen and (max-width:575) {
+    .container {
+        width: 50%;
+    }
+} */
