@@ -3,10 +3,10 @@ const exphbs = require('express-handlebars')
 const routes = require('./routes')
 const app = express()
 
+require('./config/mongoose')
 
 app.engine('hbs', exphbs({defaultLayout : 'main', extname : '.hbs'}))
 app.set('view engine' , 'hbs')
-require('./config/mongoose')
 
 app.use(routes)
 
