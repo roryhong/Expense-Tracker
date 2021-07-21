@@ -5,8 +5,18 @@ const app = express()
 
 require('./config/mongoose')
 
-app.engine('hbs', exphbs({defaultLayout : 'main', extname : '.hbs'}))
-app.set('view engine' , 'hbs')
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    helpers: {
+        toDate(date) {
+            return new Date(date.getTime() - (date.getTimezoneOffset() * 60 * 1000))
+                .toISOString()
+                .split("T")[0]
+        }
+    }
+}))
+app.set('view engine', 'hbs')
 
 app.use(routes)
 

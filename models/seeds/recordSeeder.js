@@ -1,4 +1,5 @@
 const db = require('../../config/mongoose')
+const Category = require('../Category')
 const Record = require('../Record')
 
 const RecordData = [
@@ -23,7 +24,19 @@ const RecordData = [
 ]
 
 db.once('open', () => {
-    Record.create(RecordData)
+    const categoryList = {}
+    Category.find()
+      .lean()
+      .then(categories => {
+        categories.forEach(category => {
+            categoryList[category.categoryName] = category._id
+        })
+      })
 
-    console.log('done')
+    Record.create(RecordData)
+      .then(() => {
+        console.log('Add record seeder!')
+        return db.close()
+      })
+      .catch(err => console.error(err))
 })
