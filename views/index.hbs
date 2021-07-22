@@ -1,8 +1,8 @@
-<div class="container" >
+<div class="container">
     <div class="mt-5 d-flex justify-content-center">
         <form action="">
-            <select class="form-select mt-2" aria-label="Default select example" style="width: 500px;" name="category" id="category"
-                onchange="submit()">
+            <select class="form-select mt-2" aria-label="Default select example" style="width: 500px;" name="category"
+                id="category" onchange="submit()">
                 <option selected>類別</option>
                 {{#each categories}}
                 <option value="{{this._id}}">{{this.categoryName}}</option>
@@ -17,24 +17,30 @@
         </div>
     </div>
     {{#each records}}
-    <div class="row mb-3" style="border: 1px solid tomato;">
-        <div class="col-auto mr-auto row">
-                <i class="{{this.category.categoryIcon}}" style="font-size: 40px;"></i>
-            <div>
+    <div class="row mb-3">
+        <div class="col-auto mr-auto ml-1 row">
+                <i class="{{this.category.categoryIcon}} mt-1" style="font-size: 40px;"></i>
+            <div class="ml-3">
                 <h4 style="display: inline; vertical-align:middle;">{{this.name}}</h4>
                 <h5>{{toDate this.date}}</h5>
             </div>
+        </div>
+        <div>
             <h3>{{this.amount}}</h3>
         </div>
         <div class="col-auto">
-            <a class="btn" href="/record/{{this._id}}/edit">修改</a>
+            <a class="btn btn-success" href="/record/{{this._id}}/edit">修改</a>
             <form action="/record/{{this._id}}?_method=DELETE" method="POST" style="display: inline;" class="ml-2">
-                <button  type="submit">刪除</button>
-            </form>              
+                <button class=' btn btn-danger' type="submit">刪除</button>
+            </form>
         </div>
     </div>
     {{/each}}
-    <a href="/record/new">
-        <button type="button" class="btn btn-outline-info">新增支出</button>
-    </a>
+    <div class="d-flex mb-5 mt-5">
+            <a href="/record/new" class="m-auto">
+                <button type="button" class="btn btn-outline-info">
+                    新增支出
+                </button>
+            </a>
+    </div>
 </div>

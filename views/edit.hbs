@@ -1,8 +1,10 @@
-<div class="col-7 ml-auto mr-auto mt-3 ">
-    <form action="/record/{{record._id}}?_method=PUT" method="POST" style="width: 80%;" class="m-auto">
+<div class="col-7 ml-auto mr-auto mt-5">
+    <form action="/record/{{record._id}}?_method=PUT" method="POST" style="width: 70%;" class="m-auto">
         <div>
             <h6>*必填欄位</h6>
-            <h3>請輸入你的支出</h3>
+            <div style="text-align: center;">
+                <h3>請輸入你的支出</h3>
+            </div>
         </div>
         <div>
             <label for="name">名稱* :</label>
@@ -14,7 +16,7 @@
         </div>
         <div class="mb-3 mt-3">
             <label for="category">類別* :</label>
-            <select class="form-select mt-2" aria-label="Default select" style="width: 500px;" name="category" id="category" 
+            <select class="form-select mt-2" style="width: 100%;" aria-label="Default select" name="category" id="category" 
             data-value="{{record.category}}" required>
                 <option value="">類別</option>
                 {{#each categories}}
