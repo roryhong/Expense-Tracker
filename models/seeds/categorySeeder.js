@@ -4,7 +4,7 @@ const Category = require('../Category')
 const categoryData =  [
     {
         categoryName: '家居物業',
-        categoryIcon: 'fas fa-utensils'
+        categoryIcon: 'fas fa-home'
     },
     {
         categoryName: '交通出行',

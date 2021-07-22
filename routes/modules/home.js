@@ -16,7 +16,8 @@ router.get('/', (req , res) => {
       .then(category => categories.push(...category))
       .catch(error => console.log(error))
 
-    Record.find()
+    Record.find(filter)
+      .populate('category')
       .lean()
       .then(records => {
         let totalAmount = 0

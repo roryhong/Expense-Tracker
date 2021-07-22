@@ -1,7 +1,7 @@
-<div class="container" style="max-width: 35%;">
+<div class="container" >
     <div class="mt-5 d-flex justify-content-center">
         <form action="">
-            <select class="form-select mt-2" aria-label="Default select example" style="width: 500px;" name="" id=""
+            <select class="form-select mt-2" aria-label="Default select example" style="width: 500px;" name="category" id="category"
                 onchange="submit()">
                 <option selected>類別</option>
                 {{#each categories}}
@@ -17,11 +17,9 @@
         </div>
     </div>
     {{#each records}}
-    <div class="row">
-        <div class="col-auto mr-auto row" style="background-color:#F0F0F0;">
-            <a href="/?category={{this.category._id}}">
+    <div class="row mb-3" style="border: 1px solid tomato;">
+        <div class="col-auto mr-auto row">
                 <i class="{{this.category.categoryIcon}}" style="font-size: 40px;"></i>
-            </a>
             <div>
                 <h4 style="display: inline; vertical-align:middle;">{{this.name}}</h4>
                 <h5>{{toDate this.date}}</h5>
@@ -29,14 +27,14 @@
             <h3>{{this.amount}}</h3>
         </div>
         <div class="col-auto">
-            <a class="btn" href="/record/{{this._id}}">修改</a>
-            <form action="" method="POST" style="display: inline;">
-                <button class="btn" type="button" data-id="{{this._id}}" data-info="{{this.date}} {{this.name}}">刪除</button>
-            </form>
+            <a class="btn" href="/record/{{this._id}}/edit">修改</a>
+            <form action="/record/{{this._id}}?_method=DELETE" method="POST" style="display: inline;" class="ml-2">
+                <button  type="submit">刪除</button>
+            </form>              
         </div>
     </div>
     {{/each}}
-    <a href="">
+    <a href="/record/new">
         <button type="button" class="btn btn-outline-info">新增支出</button>
-    </a
+    </a>
 </div>
