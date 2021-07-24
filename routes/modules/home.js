@@ -14,15 +14,13 @@ router.get('/', (req , res) => {
     Category.find()
       .lean()
       .then(category => categories.push(...category))
-      .catch(() => res.status(404).send('Not Found'))
-    
-    .then(Record.find(filter)
-      .populate('category')
-      .lean()
-      .then(records => {
-        let totalAmount = 0
-        records.forEach(record => totalAmount += record.amount)
-        res.render('index', { category , categories , records , totalAmount })
+      .then(Record.find(filter)
+        .populate('category')
+        .lean()
+        .then(records => {
+          let totalAmount = 0
+          records.forEach(record => totalAmount += record.amount)
+          res.render('index', { category , categories , records , totalAmount })
       })
       .catch(() => res.status(404).send('Not Found'))
     )
