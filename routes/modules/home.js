@@ -9,14 +9,14 @@ router.get('/', (req , res) => {
     if(category) {
       filter.category = category
     }
-    
+
     const categories = []
     Category.find()
       .lean()
       .then(category => categories.push(...category))
-      .catch(error => console.log(error))
-
-    Record.find(filter)
+      .catch(() => res.status(404).send('Not Found'))
+    
+    .then(Record.find(filter)
       .populate('category')
       .lean()
       .then(records => {
@@ -24,7 +24,8 @@ router.get('/', (req , res) => {
         records.forEach(record => totalAmount += record.amount)
         res.render('index', { category , categories , records , totalAmount })
       })
-      .catch(error => console.log(error))
+      .catch(() => res.status(404).send('Not Found'))
+    )
 })
 
 

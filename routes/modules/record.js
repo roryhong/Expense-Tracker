@@ -17,7 +17,7 @@ router.get('/new', (req , res) => {
 router.post('/' , (req, res) => {
     Record.create(req.body)
       .then(() => res.redirect('/'))
-      .catch(error => console.log(error))
+      .catch(() => res.status(404).send('Please Try Again Later'))
 })
 
 
@@ -27,7 +27,7 @@ router.get('/:_id/edit', (req , res) => {
     return Record.findById(id)
       .lean()
       .then(record => res.render('edit' , { categories , record }))
-      .catch(error => console.log(error))
+      .catch(() => res.status(404).send('Not Found'))
 })
 
 router.put('/:id' , (req , res) => {
@@ -42,7 +42,7 @@ router.put('/:id' , (req , res) => {
           return records.save()
       })
       .then(() => res.redirect('/'))
-      .catch(error => console.log(error))
+      .catch(() => res.status(404).send('Please Try Again Later'))
 })
 
 
@@ -52,7 +52,7 @@ router.delete('/:id', (req , res) => {
     return Record.findById(id)
       .then(record => record.remove())
       .then(() => res.redirect('/'))
-      .catch(error => console.log(error))
+      .catch(() => res.status(404).send('Please Try Again Later'))
 })
 
 module.exports = router
