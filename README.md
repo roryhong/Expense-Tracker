@@ -37,6 +37,6 @@
 
 出現以下訊息即可進入localhost:3000查看網站
 
-    Express is listening on http://localhost:3000
+    app is running on http://localhost:3000
 
     
