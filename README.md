@@ -21,7 +21,7 @@
 
 進入專案目錄
 
-    cd Expense-Tracker-main
+    cd Expense-Tracker
 
 安裝套件
 
