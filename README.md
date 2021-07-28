@@ -17,7 +17,7 @@
 ## 安裝
 在終端機輸入指令 Clone 此專案至電腦
 
-    https://github.com/roryhong/Expense-Tracker.git
+    git clone https://github.com/roryhong/Expense-Tracker.git
 
 進入專案目錄
 
