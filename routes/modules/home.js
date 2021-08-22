@@ -20,7 +20,7 @@ router.get('/', (req , res) => {
         .then(records => {
           let totalAmount = 0
           records.forEach(record => totalAmount += record.amount)
-          res.render('index', { category , categories , records , totalAmount })
+          res.render('index', { categories , records , totalAmount })
       })
       .catch(() => res.status(404).send('Not Found'))
     )
